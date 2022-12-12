@@ -33,7 +33,7 @@ class Tiles:
             elif "Console" in str(w.buffer):
                 name_to_numbers = self._append_dict(name_to_numbers, WINDOW_CONSOLE, w.number)
                 numbers_to_name[w.number] = WINDOW_CONSOLE
-            elif "miniconda3" in str(w.buffer):
+            elif "miniconda3" in str(w.buffer) or "bin/dlv" in str(w.buffer):
                 name_to_numbers = self._append_dict(name_to_numbers, WINDOW_OUTPUT, w.number)
                 numbers_to_name[w.number] = WINDOW_OUTPUT
             elif "bin/zsh" in str(w.buffer):
@@ -196,7 +196,7 @@ class Tiles:
                     w.width = 256
                 elif name is WINDOW_SHELL:
                     w.height = 7
-                    w.width = 87
+                    w.width = 76
 
     def vimspector_variable_focus(self) -> None:
         if len(vim.windows) < 5:
