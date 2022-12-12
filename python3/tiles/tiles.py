@@ -51,129 +51,240 @@ class Tiles:
         return name_to_numbers, numbers_to_name
 
     def show_display(self) -> None:
+        number_of_lines = int(vim.eval("&lines"))
+        print(f"number of lines: {number_of_lines}")
         name_to_numbers, numbers_to_name = self.index_window()
         print(name_to_numbers)
         print(numbers_to_name)
         for w in vim.windows:
             name = numbers_to_name.get(w.number, WINDOW_UNKNOWN)
             print(f"name: {name}")
+            print(f"buf: {w.buffer}")
             print(f"height: {w.height}")
             print(f"width: {w.width}")
 
     def vimspector_base_display(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
-        
+
         name_to_numbers, numbers_to_name = self.index_window()
-        for w in vim.windows:
-            name = numbers_to_name.get(w.number, WINDOW_UNKNOWN)
-            if name is WINDOW_VARIABLE:
-                w.height = 34
-                w.width = 40
-            elif name is WINDOW_STACK:
-                w.height = 10
-                w.width = 40
-            elif name is WINDOW_OUTPUT:
-                w.height = 35
-                w.width = 80
-            elif name is WINDOW_CONSOLE:
-                w.height = 10
-                w.width = 92
-            elif name is WINDOW_SHELL:
-                w.height = 11
-                w.width = 80
+        number_of_lines = int(vim.eval("&lines"))
+        if number_of_lines < 60:
+            # Small display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 34
+                    w.width = 40
+                elif name is WINDOW_STACK:
+                    w.height = 10
+                    w.width = 40
+                elif name is WINDOW_OUTPUT:
+                    w.height = 35
+                    w.width = 80
+                elif name is WINDOW_CONSOLE:
+                    w.height = 10
+                    w.width = 92
+                elif name is WINDOW_SHELL:
+                    w.height = 11
+                    w.width = 80
+        else:
+            # larger display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 59
+                    w.width = 55
+                elif name is WINDOW_STACK:
+                    w.height = 14
+                    w.width = 55
+                elif name is WINDOW_OUTPUT:
+                    w.height = 60
+                    w.width = 144
+                elif name is WINDOW_CONSOLE:
+                    w.height = 14
+                    w.width = 163
+                elif name is WINDOW_SHELL:
+                    w.height = 15
+                    w.width = 144
 
     def vimspector_code_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
-        
-        name_to_numbers, numbers_to_name = self.index_window()
-        for w in vim.windows:
-            name = numbers_to_name.get(w.number, WINDOW_UNKNOWN)
-            if name is WINDOW_VARIABLE:
-                w.height = 38
-                w.width = 32
-            elif name is WINDOW_STACK:
-                w.height = 6
-                w.width = 32
-            elif name is WINDOW_OUTPUT:
-                w.height = 39
-                w.width = 59
-            elif name is WINDOW_CONSOLE:
-                w.height = 6
-                w.width = 121
-            elif name is WINDOW_SHELL:
-                w.height = 7
-                w.width = 59
 
+        name_to_numbers, numbers_to_name = self.index_window()
+        number_of_lines = int(vim.eval("&lines"))
+        if number_of_lines < 60:
+            # Small display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 38
+                    w.width = 32
+                elif name is WINDOW_STACK:
+                    w.height = 6
+                    w.width = 32
+                elif name is WINDOW_OUTPUT:
+                    w.height = 39
+                    w.width = 59
+                elif name is WINDOW_CONSOLE:
+                    w.height = 6
+                    w.width = 121
+                elif name is WINDOW_SHELL:
+                    w.height = 7
+                    w.width = 59
+        else:
+            # larger display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 59
+                    w.width = 35
+                elif name is WINDOW_STACK:
+                    w.height = 14
+                    w.width = 35
+                elif name is WINDOW_OUTPUT:
+                    w.height = 60
+                    w.width = 123
+                elif name is WINDOW_CONSOLE:
+                    w.height = 14
+                    w.width = 204
+                elif name is WINDOW_SHELL:
+                    w.height = 15
+                    w.width = 123
 
     def vimspector_code_big_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
-        
-        name_to_numbers, numbers_to_name = self.index_window()
-        for w in vim.windows:
-            name = numbers_to_name.get(w.number, WINDOW_UNKNOWN)
-            if name is WINDOW_VARIABLE:
-                w.height = 40
-                w.width = 12
-            elif name is WINDOW_STACK:
-                w.height = 4
-                w.width = 12
-            elif name is WINDOW_OUTPUT:
-                w.height = 41
-                w.width = 42
-            elif name is WINDOW_CONSOLE:
-                w.height = 4
-                w.width = 141
-            elif name is WINDOW_SHELL:
-                w.height = 5
-                w.width = 59
 
+        name_to_numbers, numbers_to_name = self.index_window()
+        number_of_lines = int(vim.eval("&lines"))
+        if number_of_lines < 60:
+            # Small display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 40
+                    w.width = 12
+                elif name is WINDOW_STACK:
+                    w.height = 4
+                    w.width = 12
+                elif name is WINDOW_OUTPUT:
+                    w.height = 41
+                    w.width = 42
+                elif name is WINDOW_CONSOLE:
+                    w.height = 4
+                    w.width = 141
+                elif name is WINDOW_SHELL:
+                    w.height = 5
+                    w.width = 59
+        else:
+            # Larger display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 67
+                    w.width = 19
+                elif name is WINDOW_STACK:
+                    w.height = 6
+                    w.width = 19
+                elif name is WINDOW_OUTPUT:
+                    w.height = 68
+                    w.width = 77
+                elif name is WINDOW_CONSOLE:
+                    w.height = 6
+                    w.width = 256
+                elif name is WINDOW_SHELL:
+                    w.height = 7
+                    w.width = 87
 
     def vimspector_variable_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
-        
+
         name_to_numbers, numbers_to_name = self.index_window()
-        for w in vim.windows:
-            name = numbers_to_name.get(w.number, WINDOW_UNKNOWN)
-            if name is WINDOW_VARIABLE:
-                w.height = 34
-                w.width = 67
-            elif name is WINDOW_STACK:
-                w.height = 10
-                w.width = 67
-            elif name is WINDOW_OUTPUT:
-                w.height = 35
-                w.width = 80
-            elif name is WINDOW_CONSOLE:
-                w.height = 10
-                w.width = 65
-            elif name is WINDOW_SHELL:
-                w.height = 11
-                w.width = 80
+        number_of_lines = int(vim.eval("&lines"))
+        if number_of_lines < 60:
+            # Small display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 34
+                    w.width = 67
+                elif name is WINDOW_STACK:
+                    w.height = 10
+                    w.width = 67
+                elif name is WINDOW_OUTPUT:
+                    w.height = 35
+                    w.width = 80
+                elif name is WINDOW_CONSOLE:
+                    w.height = 10
+                    w.width = 65
+                elif name is WINDOW_SHELL:
+                    w.height = 11
+                    w.width = 80
+        else:
+            # Larger display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 59
+                    w.width = 94
+                elif name is WINDOW_STACK:
+                    w.height = 14
+                    w.width = 94
+                elif name is WINDOW_OUTPUT:
+                    w.height = 60
+                    w.width = 126
+                elif name is WINDOW_CONSOLE:
+                    w.height = 14
+                    w.width = 143
+                elif name is WINDOW_SHELL:
+                    w.height = 15
+                    w.width = 125
 
 
     def vimspector_stack_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
-        
+
         name_to_numbers, numbers_to_name = self.index_window()
-        for w in vim.windows:
-            name = numbers_to_name.get(w.number, WINDOW_UNKNOWN)
-            if name is WINDOW_VARIABLE:
-                w.height = 6
-                w.width = 67
-            elif name is WINDOW_STACK:
-                w.height = 38
-                w.width = 67
-            elif name is WINDOW_OUTPUT:
-                w.height = 35
-                w.width = 80
-            elif name is WINDOW_CONSOLE:
-                w.height = 10
-                w.width = 65
-            elif name is WINDOW_SHELL:
-                w.height = 11
-                w.width = 80
+        number_of_lines = int(vim.eval("&lines"))
+        if number_of_lines < 60:
+            # Small display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 6
+                    w.width = 67
+                elif name is WINDOW_STACK:
+                    w.height = 38
+                    w.width = 67
+                elif name is WINDOW_OUTPUT:
+                    w.height = 35
+                    w.width = 80
+                elif name is WINDOW_CONSOLE:
+                    w.height = 10
+                    w.width = 65
+                elif name is WINDOW_SHELL:
+                    w.height = 11
+                    w.width = 80
+        else:
+            # Larger display
+            for w in vim.windows:
+                name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
+                if name is WINDOW_VARIABLE:
+                    w.height = 19
+                    w.width = 94
+                elif name is WINDOW_STACK:
+                    w.height = 54
+                    w.width = 94
+                elif name is WINDOW_OUTPUT:
+                    w.height = 60
+                    w.width = 126
+                elif name is WINDOW_CONSOLE:
+                    w.height = 14
+                    w.width = 143
+                elif name is WINDOW_SHELL:
+                    w.height = 15
+                    w.width = 125
