@@ -18,6 +18,11 @@ class Tiles:
         index[name] = var
         return index
 
+    def _equalize_code_windows(self):
+        name_to_numbers, numbers_to_name = self.index_window()
+        code_windows = name_to_numbers.get(WINDOW_CODE, [])
+
+
     def index_window(self) -> Dict:
         name_to_numbers = dict()
         numbers_to_name = dict()
@@ -66,6 +71,7 @@ class Tiles:
     def vimspector_base_display(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
+            return None
 
         name_to_numbers, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
@@ -111,6 +117,7 @@ class Tiles:
     def vimspector_code_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
+            return None
 
         name_to_numbers, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
@@ -156,6 +163,7 @@ class Tiles:
     def vimspector_code_big_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
+            return None
 
         name_to_numbers, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
@@ -201,6 +209,7 @@ class Tiles:
     def vimspector_variable_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
+            return None
 
         name_to_numbers, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
@@ -247,6 +256,7 @@ class Tiles:
     def vimspector_stack_focus(self) -> None:
         if len(vim.windows) < 5:
             print("Nothing to re-tiles")
+            return None
 
         name_to_numbers, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
