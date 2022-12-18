@@ -182,10 +182,10 @@ class Tiles:
                     w.width = 42
                 elif name is WINDOW_CONSOLE:
                     w.height = 4
-                    w.width = 141
+                    w.width = 158
                 elif name is WINDOW_SHELL:
                     w.height = 5
-                    w.width = 59
+                    w.width = 42
         else:
             # Larger display
             for w in vim.windows:
