@@ -152,13 +152,13 @@ class Tiles:
                     w.width = 35
                 elif name is WINDOW_OUTPUT:
                     w.height = 60
-                    w.width = 123
+                    w.width = 93
                 elif name is WINDOW_CONSOLE:
                     w.height = 14
-                    w.width = 204
+                    w.width = 234
                 elif name is WINDOW_SHELL:
                     w.height = 15
-                    w.width = 123
+                    w.width = 93
 
     def vimspector_code_big_focus(self) -> None:
         if len(vim.windows) < 5:
