@@ -99,20 +99,20 @@ class Tiles:
             for w in vim.windows:
                 name = numbers_to_name.get(w.number, WINDOW_UNKNOWN + "_" + str(w.buffer))
                 if name is WINDOW_VARIABLE:
-                    w.height = 59
-                    w.width = 55
+                    w.height = 60
+                    w.width = 75
                 elif name is WINDOW_STACK:
                     w.height = 14
-                    w.width = 55
+                    w.width = 75
                 elif name is WINDOW_OUTPUT:
-                    w.height = 60
-                    w.width = 144
+                    w.height = 61
+                    w.width = 119
                 elif name is WINDOW_CONSOLE:
                     w.height = 14
-                    w.width = 163
+                    w.width = 169
                 elif name is WINDOW_SHELL:
                     w.height = 15
-                    w.width = 144
+                    w.width = 118
 
     def vimspector_code_focus(self) -> None:
         if len(vim.windows) < 5:
