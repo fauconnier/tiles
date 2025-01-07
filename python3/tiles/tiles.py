@@ -83,7 +83,7 @@ class Tiles:
 
         _, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
-        if number_of_lines < 60:
+        if number_of_lines < 70:
             # Small display
             for w in vim.windows:
                 name = numbers_to_name.get(
@@ -133,7 +133,7 @@ class Tiles:
 
         _, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
-        if number_of_lines < 60:
+        if number_of_lines < 70:
             # Small display
             for w in vim.windows:
                 name = numbers_to_name.get(
@@ -183,7 +183,7 @@ class Tiles:
 
         _, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
-        if number_of_lines < 60:
+        if number_of_lines < 70:
             # Small display
             for w in vim.windows:
                 name = numbers_to_name.get(
@@ -233,7 +233,7 @@ class Tiles:
 
         _, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
-        if number_of_lines < 60:
+        if number_of_lines < 70:
             # Small display
             for w in vim.windows:
                 name = numbers_to_name.get(
@@ -283,7 +283,7 @@ class Tiles:
 
         _, numbers_to_name = self.index_window()
         number_of_lines = int(vim.eval("&lines"))
-        if number_of_lines < 60:
+        if number_of_lines < 70:
             # Small display
             for w in vim.windows:
                 name = numbers_to_name.get(
